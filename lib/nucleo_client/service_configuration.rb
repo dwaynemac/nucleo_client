@@ -2,11 +2,10 @@ module NucleoClient
   module ServiceConfiguration
     def self.included(base)
       base.send('use_hydra', NucleoClient::HYDRA)
-      #base.send('force_ssl')
 
       host = case ENV['RACK_ENV']
         when 'development'
-          'nucleo_api'
+          NucleoClient::HOST
         when 'production'
           'metododerose.org/nucleo_api'
       end
